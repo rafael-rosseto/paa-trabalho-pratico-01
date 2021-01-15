@@ -1,5 +1,5 @@
 #include <iostream>
-#include "funcoes.h"
+#include "vetores.h"
 
 int main()
 {
