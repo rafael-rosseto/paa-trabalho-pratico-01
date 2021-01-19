@@ -19,7 +19,7 @@ void gerarVetor(int vetor[], bool ordenado, int size)
         srand(time(0));
         for (int i = 0; i < size; i++)
         {
-            vetor[i] = rand();
+            vetor[i] = rand() % 99999 + 1;
         }
     }
 }
