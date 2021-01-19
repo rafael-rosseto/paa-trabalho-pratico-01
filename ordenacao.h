@@ -95,12 +95,121 @@ void selectionSort(int array[], int size)
     }
 }
 
-void heapSort(int array[])
+void maxHeap(int array[], int n)
 {
+    for (int i = 1; i < n; i++)
+    {
+        if (array[i] > array[(i - 1) / 2])
+        {
+            int j = i;
+
+            while (array[j] > array[(j - 1) / 2])
+            {
+                troca(&array[j], &array[(j - 1) / 2]);
+                j = (j - 1) / 2;
+            }
+        }
+    }
 }
 
-void mergeSort(int array[])
+void heapSort(int array[], int n)
 {
+    maxHeap(array, n);
+
+    for (int i = n - 1; i > 0; i--)
+    {
+        troca(&array[0], &array[i]);
+
+        int j = 0, index;
+
+        do
+        {
+            index = (2 * j + 1);
+
+            if (array[index] < array[index + 1] && index < (i - 1))
+            {
+                index++;
+            }
+            if (array[j] < array[index] && index < i)
+            {
+                troca(&array[j], &array[index]);
+            }
+
+            j = index;
+
+        } while (index < i);
+    }
+}
+
+void merge(int array[], int inicio, int meio, int fim)
+{
+    int i, j, k;
+    int n1 = meio - inicio + 1;
+    int n2 = fim - meio;
+    int L[n1], R[n2];
+
+    for (i = 0; i < n1; i++)
+    {
+        L[i] = array[inicio + i];
+    }
+    for (j = 0; j < n2; j++)
+    {
+        R[j] = array[meio + 1 + j];
+    }
+
+    i = 0;
+    j = 0;
+    k = inicio;
+
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            array[k] = L[i];
+            i++;
+        }
+        else
+        {
+            array[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    while (i < n1)
+    {
+        array[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2)
+    {
+        array[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+int min(int x, int y)
+{
+    return (x < y) ? x : y;
+}
+
+void mergeSort(int arr[], int n)
+{
+    int tamanho;
+    int esquerda;
+
+    for (tamanho = 1; tamanho <= n - 1; tamanho = 2 * tamanho)
+    {
+        for (esquerda = 0; esquerda < n - 1; esquerda += 2 * tamanho)
+        {
+            int mid = min(esquerda + tamanho - 1, n - 1);
+
+            int direita = min(esquerda + 2 * tamanho - 1, n - 1);
+
+            merge(arr, esquerda, mid, direita);
+        }
+    }
 }
 
 #endif /* ORDENACAO_H */
