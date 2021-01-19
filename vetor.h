@@ -1,26 +1,26 @@
 #ifndef VETOR_H
 #define VETOR_H
 
-#define COUNT_OF(x) ((sizeof(x) / sizeof(0 [x])) / ((size_t)(!(sizeof(x) % sizeof(0 [x])))))
-
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
 
-void gerarVetorOrdenado(int vetor[], int size)
+void gerarVetor(int vetor[], bool ordenado, int size)
 {
-    for (int i = 0; i < size; i++)
+    if (ordenado)
     {
-        vetor[i] = i + 1;
+        for (int i = 0; i < size; i++)
+        {
+            vetor[i] = i + 1;
+        }
     }
-}
-
-void gerarVetorAleatorio(int vetor[], int size)
-{
-    srand(time(0));
-    for (int i = 0; i < size; i++)
+    else
     {
-        vetor[i] = rand();
+        srand(time(0));
+        for (int i = 0; i < size; i++)
+        {
+            vetor[i] = rand();
+        }
     }
 }
 

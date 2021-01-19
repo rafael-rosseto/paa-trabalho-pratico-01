@@ -3,13 +3,14 @@
 #include "vetor.h"
 #include "ordenacao.h"
 
-int vetorOrdenadoA[1000], vetorOrdenadoB[5000], vetorOrdenadoC[25000];
-int vetorAleatorioA[1000], vetorAleatorioB[5000], vetorAleatorioC[25000];
+#define COUNT_OF(x) ((sizeof(x) / sizeof(0 [x])) / ((size_t)(!(sizeof(x) % sizeof(0 [x])))))
+
+int vetorA[1000], vetorB[5000], vetorC[25000];
 
 int main()
 {
-    gerarVetorOrdenado(vetorOrdenadoA, COUNT_OF(vetorOrdenadoA));
-    imprimirVetor(vetorOrdenadoA, COUNT_OF(vetorOrdenadoA));
+    gerarVetor(vetorA, 1, COUNT_OF(vetorA));
+    imprimirVetor(vetorA, COUNT_OF(vetorA));
 
     return 0;
 }
