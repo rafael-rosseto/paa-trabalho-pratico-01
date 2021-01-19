@@ -12,7 +12,7 @@ int main()
     gerarVetor(vetorA, false, COUNT_OF(vetorA));
     cout << "Vetor desordenado:" << endl;
     imprimirVetor(vetorA, COUNT_OF(vetorA));
-    mergeSort(vetorA, COUNT_OF(vetorA));
+    quickSort(vetorA, 0, (COUNT_OF(vetorA) - 1), true);
     cout << "Vetor ordenado:" << endl;
     imprimirVetor(vetorA, COUNT_OF(vetorA));
 

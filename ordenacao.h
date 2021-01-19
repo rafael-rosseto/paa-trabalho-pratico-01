@@ -45,12 +45,73 @@ void bubbleSortMelhor(int array[], int size)
     }
 }
 
-void quickSortPrimeiro(int array[])
+int pivot(int arr[], int l, int h, bool pivotNoInicio)
 {
+    if (pivotNoInicio)
+    {
+        int x = arr[l];
+        int i = (l - 1);
+
+        for (int j = l + 1; j <= h; j++)
+        {
+            if (arr[j] <= x)
+            {
+                i++;
+                troca(&arr[i], &arr[j]);
+            }
+        }
+        troca(&arr[i + 1], &arr[h]);
+        return (i + 1);
+    }
+    else
+    {
+        int x = arr[h / 2];
+        int i = (l - 1);
+
+        for (int j = l; j <= h; j++)
+        {
+            if (j == h / 2)
+            {
+                continue;
+            }
+            if (arr[j] <= x)
+            {
+                i++;
+                troca(&arr[i], &arr[j]);
+            }
+        }
+        troca(&arr[i + 1], &arr[h]);
+        return (i + 1);
+    }
 }
 
-void quickSortCentro(int array[])
+void quickSort(int arr[], int l, int h, bool pivotNoInicio)
 {
+    int stack[h - l + 1];
+    int top = -1;
+
+    stack[++top] = l;
+    stack[++top] = h;
+
+    while (top >= 0)
+    {
+        h = stack[top--];
+        l = stack[top--];
+
+        int p = pivot(arr, l, h, pivotNoInicio);
+
+        if (p - 1 > l)
+        {
+            stack[++top] = l;
+            stack[++top] = p - 1;
+        }
+
+        if (p + 1 < h)
+        {
+            stack[++top] = p + 1;
+            stack[++top] = h;
+        }
+    }
 }
 
 void insertionSort(int array[], int size)
