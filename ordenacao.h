@@ -50,38 +50,33 @@ int pivot(int arr[], int l, int h, bool pivotNoInicio)
     if (pivotNoInicio)
     {
         int x = arr[l];
-        int i = (l - 1);
+        int i = (h + 1);
 
-        for (int j = l + 1; j <= h; j++)
+        for (int j = h; j >= l+1; j--)
         {
-            if (arr[j] <= x)
+            if (arr[j] >= x)
             {
-                i++;
+                i--;
                 troca(&arr[i], &arr[j]);
             }
         }
-        troca(&arr[i + 1], &arr[h]);
-        return (i + 1);
+        troca(&arr[i - 1], &arr[l]);
+        return (i - 1);
     }
     else
     {
-        int x = arr[h / 2];
-        int i = (l - 1);
+        int x = arr[((h+l) / 2)];//pivo
+        int i = l;//esq
+        int j = h;//dir
+        int k;
 
-        for (int j = l; j <= h; j++)
-        {
-            if (j == h / 2)
-            {
-                continue;
-            }
-            if (arr[j] <= x)
-            {
-                i++;
-                troca(&arr[i], &arr[j]);
-            }
-        }
-        troca(&arr[i + 1], &arr[h]);
-        return (i + 1);
+        do{
+            while(x>arr[i]) i++;
+            while(x<arr[j]) j--;
+           troca(&arr[j],&arr[i]);
+        }while(i<j);
+        for(k=l; arr[k]!=x; k++);
+        return(k);
     }
 }
 
