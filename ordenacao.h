@@ -52,7 +52,7 @@ int pivot(int arr[], int l, int h, bool pivotNoInicio)
         int x = arr[l];
         int i = (h + 1);
 
-        for (int j = h; j >= l+1; j--)
+        for (int j = h; j >= l + 1; j--)
         {
             if (arr[j] >= x)
             {
@@ -65,18 +65,22 @@ int pivot(int arr[], int l, int h, bool pivotNoInicio)
     }
     else
     {
-        int x = arr[((h+l) / 2)];//pivo
-        int i = l;//esq
-        int j = h;//dir
+        int x = arr[((h + l) / 2)]; //pivo
+        int i = l;                  //esq
+        int j = h;                  //dir
         int k;
 
-        do{
-            while(x>arr[i]) i++;
-            while(x<arr[j]) j--;
-           troca(&arr[j],&arr[i]);
-        }while(i<j);
-        for(k=l; arr[k]!=x; k++);
-        return(k);
+        do
+        {
+            while (x > arr[i])
+                i++;
+            while (x < arr[j])
+                j--;
+            troca(&arr[j], &arr[i]);
+        } while (i < j);
+        for (k = l; arr[k] != x; k++)
+            ;
+        return (k);
     }
 }
 
