@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int vetorA[5000], vetorB[20000], vetorC[100000];
+int vetorA[2000], vetorB[10000], vetorC[20000];
 
 void gerarVetor(int vetor[], bool ordenado, int size)
 {
