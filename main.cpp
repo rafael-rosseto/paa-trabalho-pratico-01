@@ -8,34 +8,30 @@
 using namespace std;
 using namespace std::chrono;
 
-#define bubbleSimples(x) bubbleSortSimples(x, COUNT_OF(x))
-#define bubbleMelhor(x) bubbleSortMelhor(x, COUNT_OF(x))
-#define quick(x) quickSort(x, 0, COUNT_OF(x), true)
-#define insertion(x) insertionSort(x, COUNT_OF(x))
-#define shell(x) shellSort(x, COUNT_OF(x))
-#define selection(x) selectionSort(x, COUNT_OF(x))
-#define heap(x) heapSort(x, COUNT_OF(x))
-#define merge(x) mergeSort(x, COUNT_OF(x))
 #define N_amostras 10
 
 int main()
 {
-    int maior, menor, media;
+    int tamanho, maior, menor, media;
     ofstream logfile;
     logfile.open("analize.txt");
+    cout << "Executando cada algoritmo de ordenação " << N_amostras << " vezes, a analize será salva no arquivo análize.txt" << endl;
 
-    // Bubble sort simples
+    /*
+     *  Bubble Sort simples
+     */
     logfile << "Bubble Sort Simples:" << endl;
     // Vetor A
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorA);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorA, false, COUNT_OF(vetorA));
+        gerarVetor(vetorA, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        bubbleSimples(vetorA);
+        bubbleSortSimples(vetorA, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -44,8 +40,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorA:" << endl;
@@ -58,12 +52,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorB);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorB, false, COUNT_OF(vetorB));
+        gerarVetor(vetorB, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        bubbleSimples(vetorB);
+        bubbleSortSimples(vetorB, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -72,8 +67,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorB:" << endl;
@@ -86,12 +79,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorC);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorC, false, COUNT_OF(vetorC));
+        gerarVetor(vetorC, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        bubbleSimples(vetorC);
+        bubbleSortSimples(vetorC, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -100,8 +94,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorC:" << endl;
@@ -110,18 +102,21 @@ int main()
     logfile << "media: " << media << endl
             << endl;
 
-    // Bubble sort melhor
+    /*
+     *  Bubble Sort melhor
+     */
     logfile << "Bubble Sort Melhor:" << endl;
     // Vetor A
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorA);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorA, false, COUNT_OF(vetorA));
+        gerarVetor(vetorA, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        bubbleMelhor(vetorA);
+        bubbleSortMelhor(vetorA, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -130,8 +125,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorA:" << endl;
@@ -144,12 +137,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorB);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorB, false, COUNT_OF(vetorB));
+        gerarVetor(vetorB, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        bubbleMelhor(vetorB);
+        bubbleSortMelhor(vetorB, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -158,8 +152,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorB:" << endl;
@@ -172,12 +164,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorC);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorC, false, COUNT_OF(vetorC));
+        gerarVetor(vetorC, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        bubbleMelhor(vetorC);
+        bubbleSortMelhor(vetorC, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -186,8 +179,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorC:" << endl;
@@ -196,18 +187,21 @@ int main()
     logfile << "media: " << media << endl
             << endl;
 
-    // Quick Sort
+    /*
+     *  Quick Sort
+     */
     logfile << "Quick Sort:" << endl;
     // Vetor A
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorA);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorA, false, COUNT_OF(vetorA));
+        gerarVetor(vetorA, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        quick(vetorA);
+        quickSort(vetorA, 0, tamanho, true);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -216,8 +210,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorA:" << endl;
@@ -230,12 +222,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorB);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorB, false, COUNT_OF(vetorB));
+        gerarVetor(vetorB, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        quick(vetorB);
+        quickSort(vetorB, 0, tamanho, true);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -244,8 +237,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorB:" << endl;
@@ -258,12 +249,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorC);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorC, false, COUNT_OF(vetorC));
+        gerarVetor(vetorC, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        quick(vetorC);
+        quickSort(vetorC, 0, tamanho, true);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -272,8 +264,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorC:" << endl;
@@ -282,18 +272,21 @@ int main()
     logfile << "media: " << media << endl
             << endl;
 
-    // Insertion Sort
+    /*
+     *  Insertion Sort
+     */
     logfile << "Insertion Sort:" << endl;
     // Vetor A
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorA);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorA, false, COUNT_OF(vetorA));
+        gerarVetor(vetorA, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        insertion(vetorA);
+        insertionSort(vetorA, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -302,8 +295,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorA:" << endl;
@@ -316,12 +307,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorB);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorB, false, COUNT_OF(vetorB));
+        gerarVetor(vetorB, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        insertion(vetorB);
+        insertionSort(vetorB, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -330,8 +322,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorB:" << endl;
@@ -344,12 +334,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorC);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorC, false, COUNT_OF(vetorC));
+        gerarVetor(vetorC, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        insertion(vetorC);
+        insertionSort(vetorC, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -358,8 +349,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorC:" << endl;
@@ -368,18 +357,21 @@ int main()
     logfile << "media: " << media << endl
             << endl;
 
-    // Shell Sort
+    /*
+     *  Shell Sort
+     */
     logfile << "Shell Sort:" << endl;
     // Vetor A
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorA);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorA, false, COUNT_OF(vetorA));
+        gerarVetor(vetorA, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        shell(vetorA);
+        shellSort(vetorA, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -388,8 +380,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorA:" << endl;
@@ -402,12 +392,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorB);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorB, false, COUNT_OF(vetorB));
+        gerarVetor(vetorB, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        shell(vetorB);
+        shellSort(vetorB, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -416,8 +407,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorB:" << endl;
@@ -430,12 +419,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorC);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorC, false, COUNT_OF(vetorC));
+        gerarVetor(vetorC, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        shell(vetorC);
+        shellSort(vetorC, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -444,8 +434,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorC:" << endl;
@@ -454,18 +442,21 @@ int main()
     logfile << "media: " << media << endl
             << endl;
 
-    // Selection Sort
+    /*
+     *  Selection Sort
+     */
     logfile << "Selection Sort:" << endl;
     // Vetor A
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorA);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorA, false, COUNT_OF(vetorA));
+        gerarVetor(vetorA, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        selection(vetorA);
+        selectionSort(vetorA, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -474,8 +465,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorA:" << endl;
@@ -488,12 +477,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorB);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorB, false, COUNT_OF(vetorB));
+        gerarVetor(vetorB, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        selection(vetorB);
+        selectionSort(vetorB, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -502,8 +492,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorB:" << endl;
@@ -516,12 +504,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorC);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorC, false, COUNT_OF(vetorC));
+        gerarVetor(vetorC, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        selection(vetorC);
+        selectionSort(vetorC, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -530,8 +519,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorC:" << endl;
@@ -540,18 +527,21 @@ int main()
     logfile << "media: " << media << endl
             << endl;
 
-    // Merge Sort
+    /*
+     *  Merge Sort
+     */
     logfile << "Merge Sort:" << endl;
     // Vetor A
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorA);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorA, false, COUNT_OF(vetorA));
+        gerarVetor(vetorA, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        merge(vetorA);
+        mergeSort(vetorA, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -560,8 +550,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorA:" << endl;
@@ -574,12 +562,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorB);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorB, false, COUNT_OF(vetorB));
+        gerarVetor(vetorB, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        merge(vetorB);
+        mergeSort(vetorB, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -588,8 +577,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorB:" << endl;
@@ -602,12 +589,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorC);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorC, false, COUNT_OF(vetorC));
+        gerarVetor(vetorC, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        merge(vetorC);
+        mergeSort(vetorC, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -616,8 +604,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorC:" << endl;
@@ -626,18 +612,21 @@ int main()
     logfile << "media: " << media << endl
             << endl;
 
-    // Heap Sort
+    /*
+     *  Heap Sort
+     */
     logfile << "Heap Sort:" << endl;
     // Vetor A
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorA);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorA, false, COUNT_OF(vetorA));
+        gerarVetor(vetorA, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        heap(vetorA);
+        heapSort(vetorA, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -646,8 +635,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorA:" << endl;
@@ -660,12 +647,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorB);
 
     for (int i = 0; i < N_amostras; i++)
     {
-        gerarVetor(vetorB, false, COUNT_OF(vetorB));
+        gerarVetor(vetorB, false, tamanho);
         auto time0 = high_resolution_clock::now();
-        heap(vetorB);
+        heapSort(vetorB, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -674,8 +662,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorB:" << endl;
@@ -688,12 +674,13 @@ int main()
     maior = 0;
     menor = 0xFFFFFF;
     media = 0;
+    tamanho = COUNT_OF(vetorC);
 
     for (int i = 0; i < N_amostras; i++)
     {
         gerarVetor(vetorC, false, COUNT_OF(vetorC));
         auto time0 = high_resolution_clock::now();
-        heap(vetorC);
+        heapSort(vetorC, tamanho);
         auto time1 = high_resolution_clock::now();
         auto time = duration_cast<microseconds>(time1 - time0);
 
@@ -702,8 +689,6 @@ int main()
         if (time.count() > maior)
             maior = time.count();
         media += time.count();
-
-        //logfile << "Tempo de ordenação: " << time.count() << " microsegundos." << endl;
     }
     media /= N_amostras;
     logfile << "VetorC:" << endl;
@@ -713,5 +698,6 @@ int main()
             << endl;
 
     logfile.close();
+    cout << "Execução concluída." << endl;
     return 0;
 }

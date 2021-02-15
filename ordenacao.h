@@ -155,49 +155,50 @@ void selectionSort(int array[], int size)
     }
 }
 
-void maxHeap(int array[], int n)
+void maxHeap(int array[], int i, int n)
 {
-    for (int i = 1; i < n; i++)
+    while (true)
     {
-        if (array[i] > array[(i - 1) / 2])
+        int esquerda = 2 * i + 1;
+        int direita = 2 * i + 2;
+        int max = i;
+        if (esquerda < n && array[esquerda] > array[max])
         {
-            int j = i;
-
-            while (array[j] > array[(j - 1) / 2])
-            {
-                troca(&array[j], &array[(j - 1) / 2]);
-                j = (j - 1) / 2;
-            }
+            max = esquerda;
         }
+
+        if (direita < n && array[direita] > array[max])
+        {
+            max = direita;
+        }
+
+        if (i == max)
+        {
+            break;
+        }
+
+        troca(&array[i], &array[max]);
+        i = max;
+    }
+}
+
+void heapify(int array[], int n)
+{
+    for (int i = n / 2; i >= 0; i--)
+    {
+        maxHeap(array, i, n);
     }
 }
 
 void heapSort(int array[], int n)
 {
-    maxHeap(array, n);
-
-    for (int i = n - 1; i > 0; i--)
+    int len = n;
+    heapify(array, n);
+    for (int i = len - 1; i > 0; i--)
     {
         troca(&array[0], &array[i]);
-
-        int j = 0, index;
-
-        do
-        {
-            index = (2 * j + 1);
-
-            if (array[index] < array[index + 1] && index < (i - 1))
-            {
-                index++;
-            }
-            if (array[j] < array[index] && index < i)
-            {
-                troca(&array[j], &array[index]);
-            }
-
-            j = index;
-
-        } while (index < i);
+        len--;
+        maxHeap(array, 0, len);
     }
 }
 
