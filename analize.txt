@@ -1,128 +1,41 @@
-Bubble Sort Simples:
-VetorA:
-menor tempo: 12679
-maior tempo: 26996
-media: 15100
+0 - Bubble Sort Simples
+1 - Bubble Sort Melhor
+2 - Insertion Sort
+3 - Shell Sort
+4 - Selection Sort
+5 - Heap Sort
+6 - Merge Sort
+7 - Quick Sort
 
-VetorB:
-menor tempo: 443766
-maior tempo: 455872
-media: 447739
+média de tempo em microsegundos:
+     VetorA    VetorB   VetorC
+0   1478300  67945160 20104811
+1   1623491  72101861 21277746
+2    477302  16006712  4400877
+3     44383    374003    68113
+4    756454  26582954  7440859
+5     50705    402215    66183
+6     46026    303636    51288
+7     32887    251177    42992
 
-VetorC:
-menor tempo: 1921957
-maior tempo: 1940401
-media: 1930818
+maior tempo em microsegundos:
+     VetorA    VetorB   VetorC
+0    203190   7208710  2235524
+1    229601   7942631  2372378
+2     62972   2049832   481974
+3      4963     41983     7552
+4     80604   2717484   783114
+5      6005     51355     7247
+6      5536     35446     5960
+7      4267     31647     4834
 
-Bubble Sort Melhor:
-VetorA:
-menor tempo: 12764
-maior tempo: 14041
-media: 13163
-
-VetorB:
-menor tempo: 427735
-maior tempo: 445630
-media: 432237
-
-VetorC:
-menor tempo: 1823713
-maior tempo: 2123647
-media: 1913429
-
-Quick Sort:
-VetorA:
-menor tempo: 309
-maior tempo: 351
-media: 323
-
-VetorB:
-menor tempo: 1862
-maior tempo: 2026
-media: 1909
-
-VetorC:
-menor tempo: 4081
-maior tempo: 4467
-media: 4219
-
-Insertion Sort:
-VetorA:
-menor tempo: 3681
-maior tempo: 3905
-media: 3760
-
-VetorB:
-menor tempo: 93918
-maior tempo: 114036
-media: 102360
-
-VetorC:
-menor tempo: 380449
-maior tempo: 501161
-media: 415288
-
-Shell Sort:
-VetorA:
-menor tempo: 407
-maior tempo: 514
-media: 463
-
-VetorB:
-menor tempo: 2722
-maior tempo: 3463
-media: 2950
-
-VetorC:
-menor tempo: 6053
-maior tempo: 6934
-media: 6531
-
-Selection Sort:
-VetorA:
-menor tempo: 7124
-maior tempo: 7816
-media: 7376
-
-VetorB:
-menor tempo: 175442
-maior tempo: 184979
-media: 178788
-
-VetorC:
-menor tempo: 703225
-maior tempo: 712010
-media: 706588
-
-Merge Sort:
-VetorA:
-menor tempo: 380
-maior tempo: 534
-media: 409
-
-VetorB:
-menor tempo: 2304
-maior tempo: 2539
-media: 2388
-
-VetorC:
-menor tempo: 4914
-maior tempo: 6142
-media: 5246
-
-Heap Sort:
-VetorA:
-menor tempo: 462
-maior tempo: 565
-media: 505
-
-VetorB:
-menor tempo: 2805
-maior tempo: 3805
-media: 2992
-
-VetorC:
-menor tempo: 6086
-maior tempo: 7463
-media: 6729
-
+menor tempo em microsegundos:
+     VetorA    VetorB   VetorC
+0    129550   6552360  1906039
+1    134891   6879321  1987165
+2     38742   1461362   399729
+3      4213     35193     6388
+4     72254   2590174   725052
+5      4605     35225     6131
+6      3866     27176     4849
+7      2957     22577     3964
