@@ -395,6 +395,15 @@ int main()
             }
         }
     }
+
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            resultadosMedia[i][j] /= N_AMOSTRAS;
+        }
+    }
+
     logfile << "0 - Bubble Sort Simples" << endl
             << "1 - Bubble Sort Melhor" << endl
             << "2 - Insertion Sort" << endl
