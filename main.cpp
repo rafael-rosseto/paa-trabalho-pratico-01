@@ -6,7 +6,6 @@
 #include "vetor.h"
 #include "ordenacao.h"
 
-using namespace std;
 using namespace std::chrono;
 
 #define N_AMOSTRAS 10
@@ -396,7 +395,7 @@ int main()
         }
     }
 
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 8; i++) // Calcular média
     {
         for (int j = 0; j < 3; j++)
         {
@@ -414,13 +413,14 @@ int main()
             << "7 - Quick Sort" << endl
             << endl;
     logfile << "média de tempo em microsegundos:" << endl;
-    logfile << "     VetorA    VetorB   VetorC" << endl;
-
+    logfile << "      VetorA    VetorB    VetorC" << endl;
     for (int i = 0; i < 8; i++)
     {
+        logfile << i << " -";
         for (int j = 0; j < 3; j++)
         {
-            logfile << i << setw(9) << resultadosMedia[i][j];
+            logfile.width(9);
+            logfile << resultadosMedia[i][j] << " ";
             if (j == 2)
             {
                 logfile << endl;
@@ -430,12 +430,14 @@ int main()
 
     logfile << endl
             << "maior tempo em microsegundos:" << endl;
-    logfile << "     VetorA    VetorB   VetorC" << endl;
+    logfile << "      VetorA    VetorB    VetorC" << endl;
     for (int i = 0; i < 8; i++)
     {
+        logfile << i << " -";
         for (int j = 0; j < 3; j++)
         {
-            logfile << i << setw(9) << resultadosMaior[i][j];
+            logfile.width(9);
+            logfile << resultadosMaior[i][j] << " ";
             if (j == 2)
             {
                 logfile << endl;
@@ -445,12 +447,14 @@ int main()
 
     logfile << endl
             << "menor tempo em microsegundos:" << endl;
-    logfile << "     VetorA    VetorB   VetorC" << endl;
+    logfile << "      VetorA    VetorB    VetorC" << endl;
     for (int i = 0; i < 8; i++)
     {
+        logfile << i << " -";
         for (int j = 0; j < 3; j++)
         {
-            logfile << i << setw(9) << resultadosMenor[i][j];
+            logfile.width(9);
+            logfile << resultadosMenor[i][j] << " ";
             if (j == 2)
             {
                 logfile << endl;
