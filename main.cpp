@@ -6,6 +6,7 @@
 #include "vetor.h"
 #include "ordenacao.h"
 
+using namespace std;
 using namespace std::chrono;
 
 #define N_AMOSTRAS 10
@@ -33,6 +34,7 @@ using namespace std::chrono;
 
 int main()
 {
+    int vetorA[5000], vetorB[10000], vetorC[20000];
     int tamanho;
     int resultadosMedia[8][3];
     int resultadosMaior[8][3];
@@ -50,8 +52,8 @@ int main()
 
     std::cout << "Ordenando varios vetores, isto pode demorar um pouco..." << endl;
 
-    ofstream logfile;
-    logfile.open("analize.txt");
+    ofstream file;
+    file.open("analize.txt");
     for (int amostra = 0; amostra < N_AMOSTRAS; amostra++)
     {
         for (int i = 0; i < 8; i++)
@@ -403,66 +405,66 @@ int main()
         }
     }
 
-    logfile << "0 - Bubble Sort Simples" << endl
-            << "1 - Bubble Sort Melhor" << endl
-            << "2 - Insertion Sort" << endl
-            << "3 - Shell Sort" << endl
-            << "4 - Selection Sort" << endl
-            << "5 - Heap Sort" << endl
-            << "6 - Merge Sort" << endl
-            << "7 - Quick Sort" << endl
-            << endl;
-    logfile << "média de tempo em microsegundos:" << endl;
-    logfile << "      VetorA    VetorB    VetorC" << endl;
+    file << "0 - Bubble Sort Simples" << endl
+         << "1 - Bubble Sort Melhor" << endl
+         << "2 - Insertion Sort" << endl
+         << "3 - Shell Sort" << endl
+         << "4 - Selection Sort" << endl
+         << "5 - Heap Sort" << endl
+         << "6 - Merge Sort" << endl
+         << "7 - Quick Sort" << endl
+         << endl;
+    file << "média de tempo em microsegundos:" << endl;
+    file << "      VetorA    VetorB    VetorC" << endl;
     for (int i = 0; i < 8; i++)
     {
-        logfile << i << " -";
+        file << i << " -";
         for (int j = 0; j < 3; j++)
         {
-            logfile.width(9);
-            logfile << resultadosMedia[i][j] << " ";
+            file.width(9);
+            file << resultadosMedia[i][j] << " ";
             if (j == 2)
             {
-                logfile << endl;
+                file << endl;
             }
         }
     }
 
-    logfile << endl
-            << "maior tempo em microsegundos:" << endl;
-    logfile << "      VetorA    VetorB    VetorC" << endl;
+    file << endl
+         << "maior tempo em microsegundos:" << endl;
+    file << "      VetorA    VetorB    VetorC" << endl;
     for (int i = 0; i < 8; i++)
     {
-        logfile << i << " -";
+        file << i << " -";
         for (int j = 0; j < 3; j++)
         {
-            logfile.width(9);
-            logfile << resultadosMaior[i][j] << " ";
+            file.width(9);
+            file << resultadosMaior[i][j] << " ";
             if (j == 2)
             {
-                logfile << endl;
+                file << endl;
             }
         }
     }
 
-    logfile << endl
-            << "menor tempo em microsegundos:" << endl;
-    logfile << "      VetorA    VetorB    VetorC" << endl;
+    file << endl
+         << "menor tempo em microsegundos:" << endl;
+    file << "      VetorA    VetorB    VetorC" << endl;
     for (int i = 0; i < 8; i++)
     {
-        logfile << i << " -";
+        file << i << " -";
         for (int j = 0; j < 3; j++)
         {
-            logfile.width(9);
-            logfile << resultadosMenor[i][j] << " ";
+            file.width(9);
+            file << resultadosMenor[i][j] << " ";
             if (j == 2)
             {
-                logfile << endl;
+                file << endl;
             }
         }
     }
 
-    logfile.close();
+    file.close();
     std::cout << "Execução concluída." << endl;
     return 0;
 }

@@ -7,10 +7,6 @@
 
 #define COUNT_OF(x) ((sizeof(x) / sizeof(0 [x])) / ((size_t)(!(sizeof(x) % sizeof(0 [x])))))
 
-using namespace std;
-
-int vetorA[5000], vetorB[10000], vetorC[20000];
-
 void gerarVetor(int vetor[], bool ordenado, int size)
 {
     if (ordenado)
@@ -34,7 +30,7 @@ void imprimirVetor(int vetor[], int size)
 {
     for (int i = 0; i < size; i++)
     {
-        cout << vetor[i] << endl;
+        std::cout << vetor[i] << std::endl;
     }
 }
 
