@@ -396,15 +396,6 @@ int main()
             }
         }
     }
-
-    for (int i = 0; i < 8; i++) // Calcular média
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            resultadosMedia[i][j] /= N_AMOSTRAS;
-        }
-    }
-
     file << "0 - Bubble Sort Simples" << endl
          << "1 - Bubble Sort Melhor" << endl
          << "2 - Insertion Sort" << endl
@@ -414,7 +405,32 @@ int main()
          << "6 - Merge Sort" << endl
          << "7 - Quick Sort" << endl
          << endl;
-    file << "média de tempo em microsegundos:" << endl;
+    file << endl
+         << "Tempo de dez execuções em microsegundos:" << endl;
+    file << "      VetorA    VetorB    VetorC" << endl;
+    for (int i = 0; i < 8; i++)
+    {
+        file << i << " -";
+        for (int j = 0; j < 3; j++)
+        {
+            file.width(9);
+            file << resultadosMedia[i][j] << " ";
+            if (j == 2)
+            {
+                file << endl;
+            }
+        }
+    }
+
+    for (int i = 0; i < 8; i++) // Calcular média
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            resultadosMedia[i][j] /= N_AMOSTRAS;
+        }
+    }
+
+    file << endl << "média de tempo em microsegundos:" << endl;
     file << "      VetorA    VetorB    VetorC" << endl;
     for (int i = 0; i < 8; i++)
     {
@@ -463,6 +479,7 @@ int main()
             }
         }
     }
+    
 
     file.close();
     std::cout << "Execução concluída." << endl;
