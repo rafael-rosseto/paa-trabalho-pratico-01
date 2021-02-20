@@ -34,4 +34,13 @@ void imprimirVetor(int vetor[], int size)
     }
 }
 
+void inverte(int vetor[], int size){
+    int aux;
+    for(int i=0; i<size/2; i++){
+        aux=vetor[i];
+        vetor[i]=vetor[size-i-1];
+        vetor[size-i-1]=aux;
+    }
+}
+
 #endif /* VETOR_H */
