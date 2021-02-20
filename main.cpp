@@ -39,6 +39,8 @@ int main()
     int resultadosMedia[8][3];
     int resultadosMaior[8][3];
     int resultadosMenor[8][3];
+    int resultadoCrescente[8][3];
+    int resultadoDecrescente[8][3];
 
     for (int i = 0; i < 8; i++) // inicializando as matrizes de resultado
     {
@@ -47,6 +49,8 @@ int main()
             resultadosMedia[i][j] = 0;
             resultadosMaior[i][j] = 0;
             resultadosMenor[i][j] = 0xFFFFFF;
+            resultadoCrescente[i][j] = 0;
+            resultadoDecrescente[i][j] = 0;
         }
     }
 
@@ -394,6 +398,378 @@ int main()
             default:
                 break;
             }
+            tamanho = COUNT_OF(vetorA);
+            gerarVetor(vetorA, true, tamanho);
+            tamanho = COUNT_OF(vetorB);
+            gerarVetor(vetorB, true, tamanho);
+            tamanho = COUNT_OF(vetorC);
+            gerarVetor(vetorC, true, tamanho);
+            switch(i){
+                case (0):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                bubbleSortSimples(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                bubbleSortSimples(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                bubbleSortSimples(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][2]=time.count();
+                break;
+            }
+            case (1):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                bubbleSortMelhor(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                bubbleSortMelhor(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                bubbleSortMelhor(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][2]=time.count();
+                break;
+            }
+            case (2):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                insertionSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                insertionSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                insertionSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][2]=time.count();
+                break;
+            }
+            case (3):
+            {
+                 tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                shellSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                shellSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                shellSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][2]=time.count();
+                break;
+            }
+            case (4):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                selectionSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                selectionSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                selectionSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][2]=time.count();
+                break;
+            }
+            case (5):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                heapSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                heapSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                heapSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][2]=time.count();
+                break;
+            }
+            case (6):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                mergeSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                mergeSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                mergeSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][2]=time.count();
+                break;
+            }
+            case (7):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                quickSort(vetorA, 0, tamanho, true);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                quickSort(vetorB, 0, tamanho, true);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                quickSort(vetorC, 0, tamanho, true);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoCrescente[i][2]=time.count();
+                break;
+            }
+            default:
+                break;
+            }
+            tamanho = COUNT_OF(vetorA);
+            inverte(vetorA, tamanho);
+            tamanho = COUNT_OF(vetorB);
+            inverte(vetorB, tamanho);
+            tamanho = COUNT_OF(vetorC);
+            inverte(vetorC, tamanho);
+            switch(i){
+                case (0):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                bubbleSortSimples(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                bubbleSortSimples(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                bubbleSortSimples(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][2]=time.count();
+                break;
+            }
+            case (1):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                bubbleSortMelhor(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                bubbleSortMelhor(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                bubbleSortMelhor(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][2]=time.count();
+                break;
+            }
+            case (2):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                insertionSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                insertionSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                insertionSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][2]=time.count();
+                break;
+            }
+            case (3):
+            {
+                 tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                shellSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                shellSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                shellSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][2]=time.count();
+                break;
+            }
+            case (4):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                selectionSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                selectionSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                selectionSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][2]=time.count();
+                break;
+            }
+            case (5):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                heapSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                heapSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                heapSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][2]=time.count();
+                break;
+            }
+            case (6):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                mergeSort(vetorA, tamanho);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                mergeSort(vetorB, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                mergeSort(vetorC, tamanho);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][2]=time.count();
+                break;
+            }
+            case (7):
+            {
+                tamanho = COUNT_OF(vetorA);
+                auto time0 = high_resolution_clock::now();
+                quickSort(vetorA, 0, tamanho, true);
+                auto time1 = high_resolution_clock::now();
+                auto time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][0]=time.count();
+                tamanho = COUNT_OF(vetorB);
+                time0 = high_resolution_clock::now();
+                quickSort(vetorB, 0, tamanho, true);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][1]=time.count();
+                tamanho = COUNT_OF(vetorC);
+                time0 = high_resolution_clock::now();
+                quickSort(vetorC, 0, tamanho, true);
+                time1 = high_resolution_clock::now();
+                time = duration_cast<microseconds>(time1 - time0);
+                resultadoDecrescente[i][2]=time.count();
+                break;
+            }
+            default:
+                break;
+            }
         }
     }
     file << "0 - Bubble Sort Simples" << endl
@@ -473,6 +849,38 @@ int main()
         {
             file.width(9);
             file << resultadosMenor[i][j] << " ";
+            if (j == 2)
+            {
+                file << endl;
+            }
+        }
+    }
+     file << endl
+         << "Tempo Ordenação vetor em ordem crescente:" << endl;
+    file << "      VetorA    VetorB    VetorC" << endl;
+    for (int i = 0; i < 8; i++)
+    {
+        file << i << " -";
+        for (int j = 0; j < 3; j++)
+        {
+            file.width(9);
+            file << resultadoCrescente[i][j] << " ";
+            if (j == 2)
+            {
+                file << endl;
+            }
+        }
+    }
+     file << endl
+         << "Tempo Ordenação vetor em ordem decrescente:" << endl;
+    file << "      VetorA    VetorB    VetorC" << endl;
+    for (int i = 0; i < 8; i++)
+    {
+        file << i << " -";
+        for (int j = 0; j < 3; j++)
+        {
+            file.width(9);
+            file << resultadoDecrescente[i][j] << " ";
             if (j == 2)
             {
                 file << endl;
