@@ -1,3 +1,9 @@
+/* 
+[Intergrantes]
+Nome: Gustavo Zaia, Rafael Rosseto, Vinicius Polachini
+RA: 191252158, 191251968, 191251852 (Ordem de acordo com os nomes)
+ */
+
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
