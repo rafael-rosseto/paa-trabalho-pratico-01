@@ -1,7 +1,8 @@
 /* 
 [Intergrantes]
-Nome: Gustavo Zaia, Rafael Rosseto, Vinicius Polachini
-RA: 191252158, 191251968, 191251852 (Ordem de acordo com os nomes)
+Gustavo Palmeira Zaia							191252158
+Rafael Bassi Rosseto							191251968
+Vinicius Polachini Mayer Freitas de Jesus		191251852
  */
 
 #include <cstdlib>
