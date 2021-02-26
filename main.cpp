@@ -2,7 +2,7 @@
 [Intergrantes]
 Gustavo Palmeira Zaia							191252158
 Rafael Bassi Rosseto							191251968
-Vinicius Polachini Mayer Freitas de Jesus		191251852
+Vinicius Polachini Mayer Freitas de Jesus		    191251852
  */
 
 #include <cstdlib>
