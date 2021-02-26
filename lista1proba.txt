@@ -1,0 +1,9 @@
+proba
+
+1-
+    a)
+    
+    b) media = 965
+       mediana = 981
+       
+    c) minimo = 1211
